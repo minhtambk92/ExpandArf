@@ -53,7 +53,7 @@ export function admcloseExpand() {
   parent.document.body.style.overflow = 'auto';
 }
 
-export function admExpand(admid, urlClick, urlLogExpand, admExpandPram) {
+export function admExpand(admid, urlClick, urlLogExpand, admExpandPram, callback) {
     window.__admCpExpand = true;
     var a = "";
     var btnClose = admExpandPram.btnClose || '//adi.vcmedia.vn/adt/banners/nam2015/148/expand/closeBtn0004.png';
@@ -82,7 +82,9 @@ export function admExpand(admid, urlClick, urlLogExpand, admExpandPram) {
             '<iframe src="' + admExpandPram.src + '?url=' + encodeURIComponent(urlClick + encodeURIComponent(__admLink)) + '&admid=' + admid + '" frameborder="0" scrolling="no" width="' + admExpandPram.wd + '" height="' + admExpandPram.he + '"></iframe><a href="javascript:closeExpand()" style="position:absolute; z-index:9999;' + setCloseLocal_T + ':2px;' + setCloseLocal_L + ':' + w + 'px;"><img border="0" src="' + btnClose + '" /></a>', ExpandAnimation(admid, admExpandPram.hs, admExpandPram.he, !0))
     }
 
-    if (isRun && urlLogExpand) {
-        (new Image).src = urlLogExpand;
+    if (isRun) {
+        if (callback) callback();
+        if (urlLogExpand) (new Image).src = urlLogExpand;
+
     }
 }
