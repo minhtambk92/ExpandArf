@@ -1,6 +1,6 @@
 export default class SideKick {
   constructor(data) {
-    this.admid = data.admid;
+    this.iframeWrapId = window.frameElement.id;
     this.expandSrc = data.expandSrc;
     this.width = data.width;
     this.height = data.height;
@@ -137,52 +137,52 @@ export default class SideKick {
     } catch (e) {
       //
     }
-    const bid = this.bid;
+    // const bid = this.bid;
     setTimeout(() => {
       switch (parseInt(this.bannertype, 10)) { // eslint-disable-line
-        case 21:
-          {
-            const c = document.getElementById(`admBanLarge_${bid}`);
-            if (c) {
-              c.style.width = '1px';
-              c.style.height = '1px';
-              c.style.display = 'none';
-            }
-            const d = document.getElementById(`admBanSmall_${bid}`);
-            if (d) {
-              setTimeout(() => {
-                d.style.width = `${this.widthMedium}px`;
-                d.style.height = `${this.heightMedium}px`;
-              }, 300);
-              d.style.display = 'block';
-            }
-            this.jsAnimate(`admBanExpand_${bid}`, 'height', this.heightMedium);
-            break;
-          }
-        case 22:
-          {
-            const c = document.getElementById(`admBanLarge_${bid}`);
-            const d = document.getElementById(`admBanSmall_${bid}`);
-            if (c) {
-              c.style.width = '1px';
-              c.style.height = '1px';
-              c.style.display = 'none';
-            }
-            if (d) {
-              setTimeout(() => {
-                d.style.width = `${this.widthMedium}px`;
-                d.style.height = `${this.heightMedium}px`;
-              }, 300);
-              d.style.display = 'block';
-            }
-            this.hookExpand(`admBanExpand_${bid}`, `rect(0px,${this.widthMedium}px,${this.heightMedium}px,0px)`);
-            break;
-          }
-        case 23:
-          {
-            this.admCloseIplay(a);
-            break;
-          }
+        // case 21:
+        //   {
+        //     const c = document.getElementById(`admBanLarge_${bid}`);
+        //     if (c) {
+        //       c.style.width = '1px';
+        //       c.style.height = '1px';
+        //       c.style.display = 'none';
+        //     }
+        //     const d = document.getElementById(`admBanSmall_${bid}`);
+        //     if (d) {
+        //       setTimeout(() => {
+        //         d.style.width = `${this.widthMedium}px`;
+        //         d.style.height = `${this.heightMedium}px`;
+        //       }, 300);
+        //       d.style.display = 'block';
+        //     }
+        //     this.jsAnimate(`admBanExpand_${bid}`, 'height', this.heightMedium);
+        //     break;
+        //   }
+        // case 22:
+        //   {
+        //     const c = document.getElementById(`admBanLarge_${bid}`);
+        //     const d = document.getElementById(`admBanSmall_${bid}`);
+        //     if (c) {
+        //       c.style.width = '1px';
+        //       c.style.height = '1px';
+        //       c.style.display = 'none';
+        //     }
+        //     if (d) {
+        //       setTimeout(() => {
+        //         d.style.width = `${this.widthMedium}px`;
+        //         d.style.height = `${this.heightMedium}px`;
+        //       }, 300);
+        //       d.style.display = 'block';
+        //     }
+        //     this.hookExpand(`admBanExpand_${bid}`, `rect(0px,${this.widthMedium}px,${this.heightMedium}px,0px)`);
+        //     break;
+        //   }
+        // case 23:
+        //   {
+        //     this.admCloseIplay(a);
+        //     break;
+        //   }
         case 24:
           {
             const c = document.getElementById('admMenuStick');
@@ -216,7 +216,7 @@ export default class SideKick {
     return !1;
   }
 
-  admExpandSidekickTimeout(idm) {
+  admExpandSidekickTimeout(admid) {
     let b = (new Date()).getTime();
     b = parent.window.ADS_CHECKER.getQuery('chktest') === 'test' ? (b - this.timeStartExp) / 100 : (b - this.timeStartExp) / 1500;
     if (b > 1) b = 1;
@@ -231,13 +231,13 @@ export default class SideKick {
     }
 
     setTimeout(() => {
-      this.admExpandSidekickTimeout(idm);
+      this.admExpandSidekickTimeout(admid);
     }, 50);
 
     return false;
   }
 
-  expand(a) {
+  expand() {
     this.timeStartExp = (new Date()).getTime();
     window.adm_expandScroll = this.advScroll;
     const admMenuStick = document.getElementById('admMenuStick');
@@ -249,7 +249,7 @@ export default class SideKick {
       if (typeof window._AdmAPIExpand !== 'undefined') window._AdmAPIExpand(0);
       html = `<iframe style="width:${parent.window.ADS_CHECKER.wdWidth()}px; height:${parent.window.ADS_CHECKER.wdHeight()}px;" frameborder="no" src="${this.expsrc}" id="expIframe" style="border:none; overflow: hidden;" scrolling="yes" name="ariel"></iframe>`;
 
-      html += `<div style="height: 69px; position: fixed; top: 10px; right: 15px; z-index: 1000001; visibility: visible;" id="advStickyClose"><a style="clear:both; height:69px;text-align:right; padding-right:10px;" href="javascript:void(0);ArfExpand.closeExpand('${a}');"><img id="btnCloseStick" style="visibility:hidden;" border="0" src="${this.btnCloseExpand}"></a></div>`;
+      html += `<div style="height: 69px; position: fixed; top: 10px; right: 15px; z-index: 1000001; visibility: visible;" id="advStickyClose"><a style="clear:both; height:69px;text-align:right; padding-right:10px;" href="javascript:void(0);ArfExpand.closeExpand('${this.iframeWrapId}');"><img id="btnCloseStick" style="visibility:hidden;" border="0" src="${this.btnCloseExpand}"></a></div>`;
 
       this.expandWrap.innerHTML = `<div id="_AdmFrameExpand" style="border: 0 none;clip:rect(0px, ${parent.window.ADS_CHECKER.wdWidth()}px, ${parent.window.ADS_CHECKER.wdHeight()}px, 0px);position: fixed;background:#fff;width:${parent.window.ADS_CHECKER.wdWidth()}px;height:${parent.window.ADS_CHECKER.wdHeight()}px;">${html}</div>`;
       document.body.style.overflow = 'hidden';
@@ -257,6 +257,6 @@ export default class SideKick {
     }
     parent.document.getElementById('_AdmFrameExpand').style.bottom = 'auto';
     parent.document.getElementById('_AdmFrameExpand').style.top = '0px';
-    this.admExpandSidekickTimeout(a);
+    this.admExpandSidekickTimeout(this.iframeWrapId);
   }
 }

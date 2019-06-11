@@ -12,10 +12,7 @@ function Execute(data) {
       if (typeof a.data === 'string' && a.data.indexOf(`ADMexpand_${data.admid}`) !== -1) case1160.expand();
     });
   } else if (data.type === 2) {
-    let idm = data.admid.replace('cpmzone_', '');
-    idm = idm.replace('_0_', '_');
     const sideKick = new cases.SideKick({
-      admid: idm,
       expandSrc: data.expandSrc,
       width: data.width,
       height: data.height,
@@ -27,7 +24,7 @@ function Execute(data) {
     });
 
     utils.admaddEventListener(parent.window, 'message', (a) => {
-      if (typeof a.data === 'string' && a.data.indexOf(`ADMexpand_${data.admid}`) !== -1) sideKick.expand(idm);
+      if (typeof a.data === 'string' && a.data.indexOf(`ADMexpand_${data.admid}`) !== -1) sideKick.expand();
     });
   }
 }
