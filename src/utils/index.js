@@ -1,11 +1,11 @@
-export function admcreateEle(a, d) {
+export function admcreateEle(html, id, widthStyle) {
   let b = parent.document;
-  let c = b.getElementById(d);
-  c.style.width = '100%';
+  let c = b.getElementById(id);
+  c.style.width = widthStyle || '100%';
   c.style.transition = 'height 2s ease-out';
   c = b.createDocumentFragment();
   b = b.createElement('div');
-  for (b.innerHTML = a; b.firstChild;) c.appendChild(b.firstChild);
+  for (b.innerHTML = html; b.firstChild;) c.appendChild(b.firstChild);
   return c;
 }
 

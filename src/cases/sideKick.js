@@ -10,7 +10,7 @@ export default class SideKick {
     this.heightMedium = data.heightMedium;
     this.urlClick = data.urlClick;
     this.urlLogExpand = data.urlLogExpand;
-    this.btnCloseExpand = `//adi.vcmedia.vn/cpmstick/${data.btnCloseExpand || '000000'}.png`;
+    this.btnCloseExpand = data.btnCloseExpand || '//adi.vcmedia.vn/cpmstick/000000.png';
     this.bannertype = 24;
     this.bid = undefined; // _arAdmExpand[a].bid;
 
@@ -291,6 +291,7 @@ export default class SideKick {
       this.expandWrap.innerHTML = `<div id="_AdmFrameExpand" style="border: 0 none;clip:rect(0px, ${parent.window.ADS_CHECKER.wdWidth()}px, ${parent.window.ADS_CHECKER.wdHeight()}px, 0px);position: fixed;background:#fff;width:${parent.window.ADS_CHECKER.wdWidth()}px;height:${parent.window.ADS_CHECKER.wdHeight()}px;">${html}</div>`;
       document.body.style.overflow = 'hidden';
       parent.document.getElementById('_AdmFrameExpand').style.left = `${parent.window.ADS_CHECKER.wdWidth()}px`;
+      if (this.urlLogExpand) (new Image()).src = this.urlLogExpand;
     }
     parent.document.getElementById('_AdmFrameExpand').style.bottom = 'auto';
     parent.document.getElementById('_AdmFrameExpand').style.top = '0px';
