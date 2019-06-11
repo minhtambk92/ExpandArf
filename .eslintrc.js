@@ -23,7 +23,6 @@ module.exports = {
     }
   },
   "globals": {
-    "admExpandCase": true,
     "parent": true,
     "__admCpExpand": true,
     "ADS_CHECKER": true

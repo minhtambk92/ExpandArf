@@ -1,3 +1,5 @@
+import * as utils from '../utils';
+
 export default class SideKick {
   constructor(data) {
     this.iframeWrapId = window.frameElement.id;
@@ -8,11 +10,12 @@ export default class SideKick {
     this.heightMedium = data.heightMedium;
     this.urlClick = data.urlClick;
     this.urlLogExpand = data.urlLogExpand;
-    this.draw = data.draw;
-
     this.btnCloseExpand = `//adi.vcmedia.vn/cpmstick/${data.btnCloseExpand || '000000'}.png`;
     this.bannertype = 24;
     this.bid = undefined; // _arAdmExpand[a].bid;
+
+    this.bannerImg = data.bannerImg;
+    this.bannerHtml = data.bannerHtml;
 
     this.expandWrap = null;
     //
@@ -23,13 +26,18 @@ export default class SideKick {
     // this.jsTimeDelay = 60;
     // this.jsAcceleration = 0.2;
     // this.jsVelocity = 3;
-
+    this.renderBanner();
     this.createExpandWrap();
 
     parent.window.ArfExpand = parent.window.ArfExpand || {};
     parent.window.ArfExpand.closeExpand = () => {
       this.closeExpand();
     };
+
+    // listen message to execute expand
+    utils.admaddEventListener(parent.window, 'message', (a) => {
+      if (typeof a.data === 'string' && a.data.indexOf(`ADMexpand_${this.iframeWrapId}`) !== -1) this.expand();
+    });
   }
 
   get expsrc() {
@@ -235,6 +243,35 @@ export default class SideKick {
     }, 50);
 
     return false;
+  }
+
+  renderBanner() {
+    const iframeWrap = parent.document.getElementById(this.iframeWrapId);
+    iframeWrap.style.width = '100%';
+    const f = iframeWrap.parentNode.id;
+    let a = parent.wPrototype.getElementWidth(f);
+    const srcimg = this.bannerImg;
+    const htmlSrc = `${this.bannerHtml}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}`;
+    const b = document;
+    const userAgent = `${navigator.userAgent}`;
+
+    let d = '<div id="adstop" style="position:relative;overflow:hidden">';
+    d = (userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:710px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe id="demo_iframe" src="${htmlSrc}" width="710" frameborder="0" scrolling="no" height="90"></iframe>`;
+    b.write(`${d}</div>`);
+
+    window.setTimeout(() => {
+      a = a < 665 ? 665 : a;
+      const adsStop = document.getElementById('adstop');
+      a = Math.floor((710 - a) / 2);
+      if (userAgent.indexOf('Firefox') !== -1
+       || userAgent.indexOf('Android') !== -1
+        || userAgent.indexOf('iPad') !== -1
+         || userAgent.indexOf('iPhone') !== -1) {
+        adsStop.style.marginLeft = `-${a < 0 ? 0 : a}px`;
+      } else {
+        adsStop.style.marginLeft = `-${a < 0 ? 0 : a}px`;
+      }
+    }, 100);
   }
 
   expand() {

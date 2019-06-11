@@ -1,5 +1,5 @@
 export function admcreateEle(a, d) {
-  let b = admExpandCase === 1 ? parent.document : document;
+  let b = parent.document;
   let c = b.getElementById(d);
   c.style.width = '100%';
   c.style.transition = 'height 2s ease-out';
@@ -31,13 +31,6 @@ export function ExpandAnimation(admid, d, b, c) {
     }, 1400);
   }
 }
-
-// export function closeExpand(admid, admExpandPram) {
-//   if (admExpandCase === 1) {
-//     ExpandAnimation(admid, admExpandPram.hs, admExpandPram.he, !1);
-//   }
-//   window.__admCpExpand = false;
-// }
 
 export function admaddEventListener(a, d, b) {
   if ('addEventListener' in a) {
