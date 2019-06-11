@@ -26,7 +26,7 @@ module.exports = {
     "admExpandCase": true,
     "parent": true,
     "__admCpExpand": true,
-    "__admLink": true
+    "ADS_CHECKER": true
   },
   // add your custom rules here
   rules: {
