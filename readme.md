@@ -1,4 +1,4 @@
-new ArfHtml5.cases.ExpandM({
+new ArfHtml5.cases.Expand({
             bannerImg: '//adi.admicro.vn/adt/banners/nam2015/1629/SunGroup/Sun_sukien.jpg',
             bannerHtml: '//adi.admicro.vn/adt/banners/nam2015/4043/min_html5/2017_05_30/sun-sukien-1160x90-1-62/sun-sukien-1160x90-1/sun-sukien-1160x90-1_1160_90_left.html',
             expandSrc: '//adi.admicro.vn/adt/banners/nam2015/4043/min_html5/2017_05_30/sun-sukien-1160x90-1-62/sun-sukien-1160x90-1/sun-sukien-1160x90-1_1160_250_right.html',
@@ -10,19 +10,7 @@ new ArfHtml5.cases.ExpandM({
             width: 1160,
             expandHeight: 250
         });
-
-new ArfHtml5.cases.ExpandS({
-    bannerImg: '//adi.admicro.vn/adt/banners/nam2015/1629/sungroup/980x90/102.jpg',
-    bannerHtml: '//adi.admicro.vn/adt/banners/nam2015/4043/min_html5/2017_06_14/sungroup-69/sungroup/sungroup_980_90_left.html',
-    expandSrc: '//adi.admicro.vn/adt/banners/nam2015/4043/min_html5/2017_06_14/sungroup-69/sungroup/sungroup_980_250_right.html',
-    urlClick: '%%CLICK_URL_UNESC%%',
-    urlLogExpand: '%%VIEW_EXPAND%%',
-    btnClose: '//adi.admicro.vn/adt/banners/nam2015/148/expand/sungrandcity/btn_close.png',
-    top: 'top',
-    height: 90,
-    expandHeight: 250,
-    width: 980
-});
+ NOTE: Expand template support only banner's width = 1160 or 980. Default type is 1160.
 
 new ArfExpand.cases.SideKick({
       bannerImg: "//adi.admicro.vn/adt/cpc/cpm7k/html/upload/2017/05/valencia_710x90/valencia_710x90.png",
