@@ -1,7 +1,9 @@
+import Case from './case';
 import * as utils from '../utils';
 
-export default class SideKick {
+export default class SideKick extends Case {
   constructor(data) {
+    super(data);
     this.iframeWrapId = window.frameElement.id;
     this.expandSrc = data.expandSrc;
     this.width = data.width;

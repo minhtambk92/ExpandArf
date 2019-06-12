@@ -1,7 +1,9 @@
+import Case from '../case';
 import * as utils from '../../utils';
 
-export default class ExpandM {
+export default class ExpandM extends Case {
   constructor(data) {
+    super(data);
     this.iframeWrapId = window.frameElement.id;
     this.urlClick = data.urlClick;
     this.urlLogExpand = data.urlLogExpand;
@@ -81,7 +83,7 @@ export default class ExpandM {
     let d = '<div id="adstop" style="position:relative;overflow:hidden">';
     d = userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1 ? `${d}<img src="${srcimg}" border="0"/><a href="${e}" target="_blank" style="position:absolute;top:0;left:0;width:1160px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe id="demo_iframe" src="${srcSmall}?url=${encodeURIComponent(e)}&admid=${this.iframeWrapId}" width="1160" frameborder="0" scrolling="no" height="90"></iframe>`;
     b.write(`${d}</div>`);
-    window.setTimeout(() => {
+    setTimeout(() => {
       a = a < 980 ? 980 : a;
       const adstop = document.getElementById('adstop');
       a = Math.floor((1160 - a) / 2);

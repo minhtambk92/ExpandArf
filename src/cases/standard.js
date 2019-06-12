@@ -1,5 +1,8 @@
-export default class StandardBanner {
+import Case from './case';
+
+export default class StandardBanner extends Case {
   constructor(data) {
+    super(data);
     this.iframeWrapId = window.frameElement.id;
     this.bannerImg = data.bannerImg;
     this.bannerHtml = data.bannerHtml;
