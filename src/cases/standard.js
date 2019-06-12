@@ -24,7 +24,7 @@ export default class StandardBanner {
     html = userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1 ? `${html}<img src="${srcimg}" border="0"/><a href="${e}" target="_blank" style="position:absolute;top:0;left:0;width:${this.width}px;height:${this.height}px;display:block;z-index:9999;"><span></span></a>` : `${html}<iframe id="demo_iframe" src="${bannerHtml}" width="${this.width}" frameborder="0" scrolling="no" height="${this.height}"></iframe>`;
     b.write(`${html}</div>`);
 
-    if (this.width !== 1160 || this.width !== 710) return;
+    if (this.width !== 1160 && this.width !== 710) return;
     window.setTimeout(() => {
       const ratio = (() => {
         if (this.width === 1160) return 980;

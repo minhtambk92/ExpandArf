@@ -13,7 +13,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('[name].min.js'),
-    library: 'ArfExpand',
+    library: 'ArfHtml5',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     // chunkFilename: utils.assetsPath('[id].[chunkhash].js')

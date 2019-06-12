@@ -29,8 +29,8 @@ export default class SideKick {
     this.renderBanner();
     this.createExpandWrap();
 
-    parent.window.ArfExpand = parent.window.ArfExpand || {};
-    parent.window.ArfExpand.closeExpand = () => {
+    parent.window.ArfHtml5 = parent.window.ArfHtml5 || {};
+    parent.window.ArfHtml5.closeExpand = () => {
       this.closeExpand();
     };
 
@@ -286,7 +286,7 @@ export default class SideKick {
       if (typeof window._AdmAPIExpand !== 'undefined') window._AdmAPIExpand(0);
       html = `<iframe style="width:${parent.window.ADS_CHECKER.wdWidth()}px; height:${parent.window.ADS_CHECKER.wdHeight()}px;" frameborder="no" src="${this.expsrc}" id="expIframe" style="border:none; overflow: hidden;" scrolling="yes" name="ariel"></iframe>`;
 
-      html += `<div style="height: 69px; position: fixed; top: 10px; right: 15px; z-index: 1000001; visibility: visible;" id="advStickyClose"><a style="clear:both; height:69px;text-align:right; padding-right:10px;" href="javascript:void(0);ArfExpand.closeExpand('${this.iframeWrapId}');"><img id="btnCloseStick" style="visibility:hidden;" border="0" src="${this.btnCloseExpand}"></a></div>`;
+      html += `<div style="height: 69px; position: fixed; top: 10px; right: 15px; z-index: 1000001; visibility: visible;" id="advStickyClose"><a style="clear:both; height:69px;text-align:right; padding-right:10px;" href="javascript:void(0);ArfHtml5.closeExpand('${this.iframeWrapId}');"><img id="btnCloseStick" style="visibility:hidden;" border="0" src="${this.btnCloseExpand}"></a></div>`;
 
       this.expandWrap.innerHTML = `<div id="_AdmFrameExpand" style="border: 0 none;clip:rect(0px, ${parent.window.ADS_CHECKER.wdWidth()}px, ${parent.window.ADS_CHECKER.wdHeight()}px, 0px);position: fixed;background:#fff;width:${parent.window.ADS_CHECKER.wdWidth()}px;height:${parent.window.ADS_CHECKER.wdHeight()}px;">${html}</div>`;
       document.body.style.overflow = 'hidden';

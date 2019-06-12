@@ -45,7 +45,7 @@ export default class ExpandM {
     let exandWrap;
     const parentNode = this.el.parentNode.id;
     const w = parent.wPrototype.getElementWidth(parentNode);
-    let wCompute;
+    let wCompute = 0;
     if (w > 1040) {
       console.log('1');
       exandWrap = this.createExpandWrapWithWidth();
@@ -63,12 +63,13 @@ export default class ExpandM {
   }
 
   closeExpand() {
-    utils.ExpandAnimation(this.iframeWrapId, this.hs, this.he, !1);
+    utils.ExpandAnimation(this.iframeWrapId, this.hs, this.he, false);
     window.__admCpExpand = false;
   }
 
   renderBanner() {
     const iframeWrap = parent.document.getElementById(this.iframeWrapId);
+    iframeWrap.style.height = `${this.hs}px`;
     iframeWrap.style.width = '100%';
     const f = iframeWrap.parentNode.id;
     let a = parent.wPrototype.getElementWidth(f);

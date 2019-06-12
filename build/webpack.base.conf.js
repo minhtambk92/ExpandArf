@@ -22,7 +22,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    ArfExpand: './src/index.js'
+    ArfHtml5: './src/index.js'
   },
   output: {
     path: config.build.assetsRoot,
