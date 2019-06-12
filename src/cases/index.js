@@ -1,11 +1,9 @@
-import ExpandM from './expandM';
-import ExpandS from './expandS';
+import Expand from './expand/';
 import SideKick from './sideKick';
 import StandardBanner from './standard';
 
 export default {
-  ExpandM,
-  ExpandS,
+  Expand,
   SideKick,
   StandardBanner,
 };

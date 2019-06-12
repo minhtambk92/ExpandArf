@@ -1,5 +1,5 @@
 import ExpandM from './expandM';
-import * as utils from '../utils';
+import * as utils from '../../utils';
 
 export default class ExpandS extends ExpandM {
 
@@ -29,7 +29,7 @@ export default class ExpandS extends ExpandM {
     const setCloseLocalL = this.left;
 
     this.expandWrap = this.createExpandWrap();
-    this.expandWrap.innerHTML = `<iframe src="${this.expandSrc}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}" frameborder="0" scrolling="no" width="${this.width}" height="${this.height}"></iframe><a href="javascript:closeExpand()" style="position:absolute; z-index:9999;${setCloseLocalT}:2px;${setCloseLocalL}:2px;"><img border="0" src="${d}" /></a>`;
+    this.expandWrap.innerHTML = `<iframe src="${this.expandSrc}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}" frameborder="0" scrolling="no" width="${this.width}" height="${this.expandHeight}"></iframe><a href="javascript:closeExpand()" style="position:absolute; z-index:9999;${setCloseLocalT}:2px;${setCloseLocalL}:2px;"><img border="0" src="${d}" /></a>`;
     setTimeout(() => {
       utils.ExpandAnimation(this.iframeWrapId, this.height, this.expandHeight, true);
     }, 500);
