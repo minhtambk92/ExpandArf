@@ -8,10 +8,10 @@ export default class ExpandM {
     this.btnClose = data.btnClose;
     this.top = data.top || 'bottom';
     this.left = data.left || 'right';
-    this.src = data.src;
-    this.hs = data.hs;
-    this.he = data.he;
-    this.wd = data.wd;
+    this.expandSrc = data.expandSrc;
+    this.height = data.height;
+    this.expandHeight = data.expandHeight;
+    this.width = data.width;
 
     this.bannerImg = data.bannerImg;
     this.bannerHtml = data.bannerHtml;
@@ -63,13 +63,13 @@ export default class ExpandM {
   }
 
   closeExpand() {
-    utils.ExpandAnimation(this.iframeWrapId, this.hs, this.he, false);
+    utils.ExpandAnimation(this.iframeWrapId, this.height, this.expandHeight, false);
     window.__admCpExpand = false;
   }
 
   renderBanner() {
     const iframeWrap = parent.document.getElementById(this.iframeWrapId);
-    iframeWrap.style.height = `${this.hs}px`;
+    iframeWrap.style.height = `${this.height}px`;
     iframeWrap.style.width = '100%';
     const f = iframeWrap.parentNode.id;
     let a = parent.wPrototype.getElementWidth(f);
@@ -102,8 +102,8 @@ export default class ExpandM {
     const wCompute = this.createExpandWrap();
 
     if (this.expandWrap) {
-      this.expandWrap.innerHTML = `<iframe src="${this.src}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}" frameborder="0" scrolling="no" width="${this.wd}" height="${this.he}"></iframe><a href="javascript:closeExpand()" style="position:absolute; z-index:9999;${setCloseLocalT}:2px;${setCloseLocalL}:${wCompute}px;"><img border="0" src="${btnClose}" /></a>`;
-      utils.ExpandAnimation(this.iframeWrapId, this.hs, this.he, !0);
+      this.expandWrap.innerHTML = `<iframe src="${this.expandSrc}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}" frameborder="0" scrolling="no" width="${this.width}" height="${this.expandHeight}"></iframe><a href="javascript:closeExpand()" style="position:absolute; z-index:9999;${setCloseLocalT}:2px;${setCloseLocalL}:${wCompute}px;"><img border="0" src="${btnClose}" /></a>`;
+      utils.ExpandAnimation(this.iframeWrapId, this.height, this.expandHeight, !0);
       if (this.callback) this.callback();
       if (this.urlLogExpand) (new Image()).src = this.urlLogExpand;
     }
