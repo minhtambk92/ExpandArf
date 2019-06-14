@@ -258,7 +258,7 @@ export default class SideKick extends Case {
     const userAgent = `${navigator.userAgent}`;
 
     let d = '<div id="adstop" style="position:relative;overflow:hidden">';
-    d = (userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:710px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe id="demo_iframe" src="${htmlSrc}" width="710" frameborder="0" scrolling="no" height="90"></iframe>`;
+    d = (userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:710px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${htmlSrc}" width="710" frameborder="0" scrolling="no" height="90"></iframe>`;
     b.write(`${d}</div>`);
 
     window.setTimeout(() => {
