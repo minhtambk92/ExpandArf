@@ -10,7 +10,8 @@ new ArfHtml5.cases.Expand({
             width: 1160,
             expandHeight: 250
         });
- NOTE: Expand template support only banner's width = 1160 or 980. Default type is 1160.
+
+NOTE: Expand template support only banner's width = 1160 or 980. Default type is 1160.
 
 new ArfExpand.cases.SideKick({
       bannerImg: "//adi.admicro.vn/adt/cpc/cpm7k/html/upload/2017/05/valencia_710x90/valencia_710x90.png",
@@ -25,10 +26,10 @@ new ArfExpand.cases.SideKick({
       urlLogExpand: "%%VIEW_EXPAND%%",
     });
 
-new ArfHtml5.cases.StandardBanner({
+<!-- new ArfHtml5.cases.StandardBanner({
   bannerImg: '//adi.admicro.vn/adt/cpc/cpm7k/html/upload/2017/04/Winner_710x90/710x90honda.png',
   bannerHtml: '//adi.admicro.vn/adt/cpc/cpm7k/html/upload/2017/04/Winner_710x90/Winner_710x90.html',
   urlClick: '%%CLICK_URL_UNESC%%',
   width: 710,
   height: 90
-});
+}); -->

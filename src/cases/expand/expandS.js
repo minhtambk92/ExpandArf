@@ -6,11 +6,25 @@ export default class ExpandS extends ExpandM {
   createExpandWrap() {
     let exanpdWrap = document.getElementById('_AdmExpand');
     if (!exanpdWrap) {
-      exanpdWrap = utils.admcreateEle('<div style="border: 0px none; margin: 0px; padding: 0px; text-align: left; overflow: visible; position: relative; z-index: 100000; top: 0px; left: 0px;" dir="ltr" id="_AdmExpand"></div>', this.iframeWrapId, '980px');
+      exanpdWrap = utils.admcreateEle('<div style="border: 0px none; margin: 0px; padding: 0px; text-align: left; overflow: visible; position: relative; z-index: 100000; top: 0px; left: 0px;" dir="ltr" id="_AdmExpand"></div>', this.iframeWrapId, `${this.width}px`);
       document.body.insertBefore(exanpdWrap, document.body.childNodes[0]);
       exanpdWrap = document.getElementById('_AdmExpand');
     }
     return exanpdWrap;
+  }
+
+  renderBanner() {
+    const iframeWrap = parent.document.getElementById(this.iframeWrapId);
+    iframeWrap.style.height = `${this.height}px`;
+    iframeWrap.style.width = '100%';
+    const srcimg = this.bannerImg;
+    const b = document;
+    const e = this.urlClick;
+    const userAgent = `${navigator.userAgent}`;
+    const srcSmall = this.bannerHtml;
+    let d = '<div id="adstop" style="position:relative;overflow:hidden">';
+    d = userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1 ? `${d}<img src="${srcimg}" border="0"/><a href="${e}" target="_blank" style="position:absolute;top:0;left:0;width:1160px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${srcSmall}?url=${encodeURIComponent(e)}&admid=${this.iframeWrapId}" width="1160" frameborder="0" scrolling="no" height="90"></iframe>`;
+    b.write(`${d}</div>`);
   }
 
   expand() {
