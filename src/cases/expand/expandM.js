@@ -78,16 +78,15 @@ export default class ExpandM extends Case {
     const srcimg = this.bannerImg;
     const b = document;
     const e = this.urlClick;
-    const userAgent = `${navigator.userAgent}`;
     const srcSmall = this.bannerHtml;
     let d = '<div id="adstop" style="position:relative;overflow:hidden">';
-    d = userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1 ? `${d}<img src="${srcimg}" border="0"/><a href="${e}" target="_blank" style="position:absolute;top:0;left:0;width:1160px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${srcSmall}?url=${encodeURIComponent(e)}&admid=${this.iframeWrapId}" width="1160" frameborder="0" scrolling="no" height="90"></iframe>`;
+    d = this.checkUserAgent ? `${d}<img src="${srcimg}" border="0"/><a href="${e}" target="_blank" style="position:absolute;top:0;left:0;width:1160px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${srcSmall}?url=${encodeURIComponent(e)}&admid=${this.iframeWrapId}" width="1160" frameborder="0" scrolling="no" height="90"></iframe>`;
     b.write(`${d}</div>`);
     setTimeout(() => {
       a = a < 980 ? 980 : a;
       const adstop = document.getElementById('adstop');
       a = Math.floor((1160 - a) / 2);
-      if (userAgent.indexOf('Firefox') !== -1 || userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1) {
+      if (this.checkUserAgent) {
         adstop.style.marginLeft = `-${a < 0 ? 0 : a}px`;
       } else {
         adstop.style.marginLeft = `-${a < 0 ? 0 : a}px`;

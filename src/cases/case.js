@@ -21,6 +21,8 @@ export default class Case {
         });
       }
     });
+
+    this.checkUserAgent = utils.checkUserAngent();
   }
 
   getIframes() {

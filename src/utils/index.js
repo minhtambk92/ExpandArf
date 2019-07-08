@@ -46,3 +46,7 @@ export function admcloseExpand() {
   parent.document.body.style.overflow = 'auto';
 }
 
+export function checkUserAngent() {
+  return userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1;
+}
+
