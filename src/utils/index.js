@@ -47,6 +47,7 @@ export function admcloseExpand() {
 }
 
 export function checkUserAngent() {
+  const userAgent = `${navigator.userAgent}`;
   return userAgent.indexOf('Android') !== -1 || userAgent.indexOf('iPad') !== -1 || userAgent.indexOf('iPhone') !== -1;
 }
 

@@ -250,20 +250,20 @@ export default class SideKick extends Case {
   renderBanner() {
     const iframeWrap = parent.document.getElementById(this.iframeWrapId);
     iframeWrap.style.width = '100%';
-    const f = iframeWrap.parentNode.id;
-    let a = parent.wPrototype.getElementWidth(f);
+    // const f = iframeWrap.parentNode.id;
+    let a = iframeWrap.parentNode.clientWidth;
     const srcimg = this.bannerImg;
     const htmlSrc = `${this.bannerHtml}?url=${encodeURIComponent(this.urlClick)}&admid=${this.iframeWrapId}`;
     const b = document;
 
     let d = '<div id="adstop" style="position:relative;overflow:hidden">';
-    d = (this.checkUserAgent) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:710px;height:90px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${htmlSrc}" width="710" frameborder="0" scrolling="no" height="90"></iframe>`;
+    d = (this.checkUserAgent) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:${this.widthMedium}px;height:${this.heightMedium}px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${htmlSrc}" width="${this.widthMedium}" frameborder="0" scrolling="no" height="${this.heightMedium}"></iframe>`;
     b.write(`${d}</div>`);
 
     window.setTimeout(() => {
       a = a < 665 ? 665 : a;
       const adsStop = document.getElementById('adstop');
-      a = Math.floor((710 - a) / 2);
+      a = Math.floor((this.widthMedium - a) / 2);
       if (this.checkUserAgent) {
         adsStop.style.marginLeft = `-${a < 0 ? 0 : a}px`;
       } else {

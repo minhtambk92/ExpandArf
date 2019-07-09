@@ -45,8 +45,8 @@ export default class ExpandM extends Case {
 
   createExpandWrap() {
     let exandWrap;
-    const parentNode = this.el.parentNode.id;
-    const w = parent.wPrototype.getElementWidth(parentNode);
+    // const parentNode = this.el.parentNode.id;
+    const w = this.el.parentNode.clientWidth;
     let wCompute = 0;
     if (w > 1040) {
       console.log('1');
@@ -73,8 +73,8 @@ export default class ExpandM extends Case {
     const iframeWrap = parent.document.getElementById(this.iframeWrapId);
     iframeWrap.style.height = `${this.height}px`;
     iframeWrap.style.width = '100%';
-    const f = iframeWrap.parentNode.id;
-    let a = parent.wPrototype.getElementWidth(f);
+    // const f = iframeWrap.parentNode.id;
+    let a = iframeWrap.parentNode.clientWidth;
     const srcimg = this.bannerImg;
     const b = document;
     const e = this.urlClick;

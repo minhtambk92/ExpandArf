@@ -16,8 +16,8 @@ export default class StandardBanner extends Case {
   renderBanner() {
     const iframeWrap = parent.document.getElementById(this.iframeWrapId);
     iframeWrap.style.width = '100%';
-    const f = iframeWrap.parentNode.id;
-    let a = parent.wPrototype.getElementWidth(f);
+    // const f = iframeWrap.parentNode.id;
+    let a = iframeWrap.parentNode.clientWidth;
     const b = document;
     const e = this.urlClick;
     const srcimg = this.bannerImg;
