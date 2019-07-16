@@ -3,5 +3,4 @@
 /config/
 /dist/
 /test/unit/coverage/
-/src/vendor/ViewTracking/
-/src/vendor/WriteDomAsync/
+

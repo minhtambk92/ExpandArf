@@ -257,7 +257,7 @@ export default class SideKick extends Case {
     const b = document;
 
     let d = '<div id="adstop" style="position:relative;overflow:hidden">';
-    d = (this.checkUserAgent) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:${this.widthMedium}px;height:${this.heightMedium}px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="demo_iframe" src="${htmlSrc}" width="${this.widthMedium}" frameborder="0" scrolling="no" height="${this.heightMedium}"></iframe>`;
+    d = (this.checkUserAgent) ? `${d}<img src="${srcimg}" border="0"/><a href="${this.urlClick}" target="_blank" style="position:absolute;top:0;left:0;width:${this.widthMedium}px;height:${this.heightMedium}px;display:block;z-index:9999;"><span></span></a>` : `${d}<iframe onload="renderDone()" id="arf_html5_iframe" src="${htmlSrc}" width="${this.widthMedium}" frameborder="0" scrolling="no" height="${this.heightMedium}"></iframe>`;
     b.write(`${d}</div>`);
 
     window.setTimeout(() => {
